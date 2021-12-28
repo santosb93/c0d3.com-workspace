@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--
+    Build a typewriter.
+     When the user hits enter, the words get added into an array and displayed,
+    most recent first.
+    In HTML
+      1. create an input,div called
+      display--typeWriter
+      div class display--header
+    In javascript
+      1. documentquerySelect all objects
+      2. add event listener to input for keyup
+            a)this listener will display the key in the typewriter
+            by changing the innertext of display--type
+            b) if the enter key is pressed and the value of the input is not ''
+               it will store the value in an array
+               the array will then be reduced to a string in which it will change the inner HTML
+               of the display and add the array element wrapped with h1
+  -->
+  
+  <input type="text" class = "input">
+  <div class = 'display--typeWriter'></div>
+  <div class = 'display--header'></div>
+  <script>
+    const input = document.querySelector('.input')
+    const typeWriter = document.querySelector('.display--typeWriter')
+    const header = document.querySelector('.display--header')
+    let typeWriterString = ''
+    const displayArr = []
+
+    const render = () =>{
+      displayArr.unshift(input.value)
+          const displayString = displayArr.reduce((str, thisString)=>{
+          return str + `<h1>${thisString}</h1>`
+        }, '')
+        header.innerHTML = displayString
+        typeWriterString = ''
+        input.value = ''
+    }
+
+    input.addEventListener('keyup', (e)=>{
+        if(e.keyCode === 13){
+          render()
+        }
+      typeWriter.innerText = input.value
+    })
+  </script>
+</body>
+</html>

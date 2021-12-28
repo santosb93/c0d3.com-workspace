@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--
+    Add a mouse event to an element and console.log the first parameter like in the above examples.
+    Examine the object and find the difference between the object's 
+    clientX/Y, screenX/Y, and pageX/Y properties.
+  -->
+  <h1 class ="mainTitle"> Hello World</h1>
+  <script>
+    const title = document.querySelector('.mainTitle')
+    title.addEventListener('mouseenter', e =>{
+      console.log(e)
+      /*console.log(`X difference is: ${e.screenX - e.clientX}
+      ,Y difference is: ${e.screenY - e.clientY}`)*/
+    })
+  </script>
+</body>
+</html>

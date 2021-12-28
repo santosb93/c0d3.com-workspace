@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--
+    Markdown to HTML: Use the MarkedJS Library to provide an input area 
+    for users to write Markdown syntax and display the result as the user types.
+  -->
+  <textarea name="" id="" cols="30" rows="10" class="textarea"></textarea>
+  <div class="display"></div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const textArea = document.querySelector('.textarea')
+    const display = document.querySelector('.display')
+
+
+    textArea.focus()
+
+    textArea.addEventListener('keyup', (e)=>{
+
+      display.innerHTML = marked.parse(textArea.value)
+  
+
+    })
+  </script>
+</body>
+</html>

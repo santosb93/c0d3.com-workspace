@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Friends List</h1>
+  <label for="Name">Name:</label>
+  <input class="Name"></button>
+  <label for="Age">Age:</label>
+  <input class="Age"></button>
+  <button class = 'Add'>Add</button>
+  <div class = "container"></div>
+  <script>
+    const inputName = document.querySelector('.Name')
+    const inputAge = document.querySelector('.Age')
+    const btnAdd = document.querySelector('.Add')
+    const container = document.querySelector('.container')
+    const name = JSON.parse(localStorage.getItem('Names') || '[]')
+    const age = JSON.parse(localStorage.getItem('Ages') || '[]')
+
+    const render = () => {
+      container.innerHTML = name.reduce((acc, e) =>{
+        return acc + `<h2>${e}</h2>` + '\n'
+      },'')
+      const friends = document.querySelectorAll('h2')
+      friends.forEach((e,i)=>{
+        e.addEventListener('click', ()=>{
+          alert(`Is ${age[i]} years old`)
+        })  
+
+      })
+
+    }
+
+
+    btnAdd.onclick = () => {
+      name.unshift(inputName.value)
+      
+      localStorage.setItem('Names', JSON.stringify(name))
+      age.unshift(inputAge.value)
+      localStorage.setItem('Ages', JSON.stringify(age))
+      render()
+    }
+
+    render()
+
+  </script>
+
+  <!-- 
+    Create a Friend Age Notebook, a site to store your friends' ages. 
+    Careful, make sure to store name and age separately to make the next part easier.
+
+    in HTML
+    H1
+    <label>< input> <label><input>
+    <div>
+    </div>
+    
+    in JS 
+    use document query selector to grab inputName, inputAge, btnAdd, container
+    declare a name and age array
+    on button.onclick grab the values and store into name and age array
+
+    render()
+      render is going to iterate through the name and age array and 
+      edit the inner HTML of container
+  -->
+  
+</body>
+</html>

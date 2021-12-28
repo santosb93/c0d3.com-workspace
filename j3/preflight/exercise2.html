@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--
+    Create a todo list: Click the Add button to add a todo item. It should show up as an h2 element.
+     If you click on a todo item, it should be removed.
+
+     in HTML create a H1, input, button, div container
+
+     in js use document.queryselector to grab the input, button, h2 element
+     use add event listener on the button set to click to perform a function
+        this function will get the input value and store it into an array
+        use reduce to add h2 tags to the array elements and add modify the inner html of the div container
+  -->
+  <h1>TODO LIST</h1>
+  <input class = 'input' type="text">
+  <button class = 'btn'>Add</button>
+  <div class = 'container'></div>
+  <script>
+    const input = document.querySelector('.input')
+    const btn = document.querySelector('.btn')
+    const container = document.querySelector('.container')
+    const toDoListArray = []
+    let list = []
+
+    const render = () => {
+      container.innerHTML = toDoListArray.reduce((acc, e)=>{
+        return acc + '\n' + `<h2>${e}</h2>
+        `
+      }, '')
+      list = document.querySelectorAll("h2")
+      list.forEach((listItem, i)=>{
+        listItem.addEventListener('click', () => {
+          toDoListArray.splice(i,1)
+          render()
+        })
+      })  
+
+    }
+
+    btn.onclick = () => {
+      toDoListArray.unshift(input.value)
+      render()
+      
+
+
+    }
+    
+
+  </script>
+</body>
+</html>

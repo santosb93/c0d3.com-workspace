@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container"> 
+        <input type="text" class="input">
+        <button class="generate">Generate</button>
+        <div class="breaker"></div>
+    </div>
+    <script>
+        const input = document.querySelector('.input')
+        const button = document.querySelector('.generate')
+        const breaker = document.querySelector('.breaker')
+        const breakerString = (str,idx = 0, result = '') => {
+            if(idx === str.length) return result
+            return breakerString(str, idx + 1, result + `<h1>${str[idx]}</h1>`)
+        }
+        button.onclick = () => {
+            breaker.innerHTML = breakerString(input.value)
+        }  
+    </script>
+    
+</body>
+</html>
+
+<!--
+    Spit the input string into single characters and add the individual characters into their own <h1> element
+    For example, breaking Batman will generate
+    <h1>B</h1>
+    <h1>a</h1>
+    <h1>t</h1>
+    <h1>m</h1>...
+
+    1. In html create a div class "container" with an input class "input" and a button class"generate and another div
+       class "breaker"
+    2. In js get the container and input with querySelector and store them in seperate variables
+    3. create a string called breakerString assigned to ""
+    4. Create a helper function to break the string on the click of the generate button passing input.value as an argument
+    5. the function will return a string in which the Inner HTML of the breaker div will be assigned
+    5. the recursive function will have a parameter for the input.value called str,an index call idx, and a result str
+            -Base case(if idx === str.length) return result
+            -if not base case add <h1>str[idx]</h1> to the result str
+
+
+
+
+-->

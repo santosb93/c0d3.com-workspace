@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  
+}
+
+.canvas{
+  width: 800;
+  height: 500;
+
+}

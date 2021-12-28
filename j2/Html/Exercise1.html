@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class = "heading">Change Me</h1>
+    <input class = "input" type="text" default = "Enter text here...">
+    <button class = "btn">Submit</button>
+    <script>
+        const heading = document.querySelector(".heading")
+        const input = document.querySelector(".input")
+        const button = document.querySelector(".btn")
+        button.onclick = () => {
+            heading.innerText = input.value
+        }
+    </script>
+    
+</body>
+</html>
+
+<!-- Create an h1 elemnt that says Change Me, an input box, and a submit button.
+     When the submit button is clicked, the h1 element is changed to whatever is inside the input box
+    1. In html create an h1 element, input text, and a button
+    2. In javascript when the button is clicked, get the value of the input field and assign it
+       to the innerText of the h1 element-->
+
+     

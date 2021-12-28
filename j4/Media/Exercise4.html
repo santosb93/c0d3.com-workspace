@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./Exercise4.css">
+</head>
+<body>
+  <!--
+    Build a meme image generator: When the user hits enter, take a picture and display the text near the bottom of the picture.
+  -->
+  <input class = "input--meme" type="text">
+  <div class = 'container'>
+    <video class ="video--live" src=""></video>
+    <canvas class = "canvas"></canvas>
+  </div>
+
+  <script>
+    const inputMeme = document.querySelector('.input--meme')
+    const container = document.querySelector('.container')
+    const videoElement = document.querySelector('.video--live')
+
+    const canvas = document.querySelector('.canvas')
+    const context = canvas.getContext('2d')
+
+
+    const startWebcam = () =>{
+      navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true,
+      })
+      .then((stream) =>{
+        videoElement.srcObject = stream
+        videoElement.play()
+      })
+   }
+
+   const takePicture = () =>{
+     const value = inputMeme.value
+     canvas.width = videoElement.videoWidth
+     canvas.height = videoElement.videoHeight
+     context.drawImage(videoElement,0,0)
+     context.font = "50px Comic Sans Ms"
+     context.fillStyle = "red"
+     context.fillText(value, 30, canvas.height - 150)
+   }
+
+
+  inputMeme.addEventListener('keyup', (e)=>{
+    if(e.keyCode === 13) {
+      takePicture()
+      
+    }
+
+
+  })
+
+  const app = () =>{
+    startWebcam()
+  }
+
+  app()
+
+    
+
+
+  </script>
+  
+</body>
+</html>

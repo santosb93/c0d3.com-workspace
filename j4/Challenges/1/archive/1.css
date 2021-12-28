@@ -1,0 +1,77 @@
+.smart-watch {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+}
+
+.watch {
+  position: relative;
+  z-index: 0;
+}
+.watch-face {
+  border-radius: 50%;
+  bottom: 25.5%;
+  height: 400px;
+  left: 18.3%;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  width: 400px;
+  z-index: 3;
+}
+
+.map {
+  bottom: 120px;
+  position: relative;
+  right: 200px;
+}
+
+.container--watch {
+  background: white;
+  bottom: 0px;
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  position: absolute;
+  right: 0px;
+  width: 400px;
+  z-index: 10;
+  transition-timing-function: linear;
+  transition: linear 0.3s;
+}
+
+.time {
+  font-size: 5em;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.clicked {
+  position: absolute;
+  height: 400px;
+  width: 400px;
+  left: 0px;
+  bottom: 0px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clicked .container--time {
+  width: 400px;
+}
+.clicked .container--date {
+  border-top: 1px solid black;
+  width: 400px;
+}
+.clicked .time {
+  margin-bottom: 30px;
+}
+.unclicked .container--time {
+  border-bottom: 1px solid black;
+  height: 190px;
+}
+
+.unclicked .container--date {
+  display: none;
+}

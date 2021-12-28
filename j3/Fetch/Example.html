@@ -1,0 +1,9 @@
+<h1 class="display"></h1>
+<script>
+const display = document.querySelector('.display')
+fetch('https://www.c0d3.com/api/lessons').then( (res) => {
+  return res.json()
+}).then( (data) => {
+  display.innerText = `there are ${data.length} lessons`
+})
+</script>

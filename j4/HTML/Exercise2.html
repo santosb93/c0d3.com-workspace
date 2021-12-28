@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--
+   Display mouse position only on hover.
+    When the mouse leaves the element, the h1 reverts back to its original text.
+
+    need an H1 Element labeled Hello World
+    add event listener for mouse enter
+    when the mouse enters it is going change the inner text of the H1
+    to X: Y:
+    these elements will actively display the mouse position X and Y
+  -->
+  <h1 class = "main">Hello World</h1>
+  <script>
+    const h1 = document.querySelector('.main')
+    
+    h1.addEventListener("mousemove", (e)=>{
+      h1.innerText = `x:${e.clientX} y:${e.clientY}`
+    })
+    h1.addEventListener("mouseleave", e=>{
+      h1.innerText= 'Hello World'
+    })
+
+  </script>
+  
+
+</body>
+</html>

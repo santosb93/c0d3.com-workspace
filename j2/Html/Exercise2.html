@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "container">
+        
+    </div>
+
+    <script>
+        let btnStart = document.querySelector('.start')
+        const container = document.querySelector('.container')
+
+        const startApp = () => {
+            container.innerHTML = `
+            <button class = "start">Start</button>
+            `
+            btnStart = document.querySelector('.start')
+            btnStart.onclick = () => {
+            container.innerHTML = `
+            <input type = "text" >
+            <button class = "cancel">Cancel</button>
+            `
+            const btnCancel = document.querySelector('.cancel')
+            btnCancel.onclick = startApp
+            }
+            
+        }
+        startApp()
+
+
+        
+
+    </script>
+    
+</body>
+</html>
+
+<!--Start with a button called Start. When you click on the button the pange changes to show an input and a button
+Cancel. When the CAncel button is clicked, the page goes back to its original Start-->
+
+<!-- 1. In HTML add a button called start contained in a div
+     2. In javascript queryselect the button. if the onclick of this button is pressed 
+        assign it a function to change the inner html of the div to show and input field and a buton called cancel
+     3. In javascript add an onclick function to the cancel button. if the onclick of this button is pressed
+        assign it a function to change the inner html of the div to show a button called start-->

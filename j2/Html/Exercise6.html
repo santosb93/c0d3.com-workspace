@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" class="input">
+  <button class="start">Start</button>
+  <h1 class="prime"></h1>
+  <script>
+    const input = document.querySelector('.input')
+    const button = document.querySelector('.start')
+    const prime = document.querySelector('.prime')
+    const checkPrime = (num, counter = 2, isPrime = true) => {
+      if(counter >= num || isPrime === false) return isPrime
+      if(num % counter === 0 ) return checkPrime(num, counter + 1, false)
+      return checkPrime(num, counter + 1, isPrime)
+    }
+    const nextPrime = (input, counter = 2, result = '') => {
+      if(input <= 1) return
+      if(counter > input) return result
+      if(checkPrime(counter)) result += `${counter} `
+      return nextPrime(input, counter + 1, result)
+    }
+    button.onclick = () => {
+      prime.innerText = nextPrime(parseInt(input.value, 10))
+    }
+  </script>
+  
+</body>
+</html>
+
+<!--
+  Create an input box, a button, and h1 element, when the use types in a number and hits start button,
+  all the prime numbers from 2 to the input number will be displayed.
+
+  1. in HTML create an input box class = "input", a button class Start, an h1 element class = "prime", 
+  2. in js create variables for input, start, prime
+  3. on start click call the nextPrime function passing parseInt(input.value,10) as an argument
+     This function will return a string of primes
+  4. The innerText of prime will be assigned the return nextPrime
+  5.nextPrime
+    First check if num <= 1 if so return
+    This function has a param for (num, counter = 0, result = '')
+    returns a string
+    Base case: if counter >= num return result
+    if checkPrime returns true recursive call adding 1 to counter and num to the result
+    if not it will return the recursive call adding 1 to counter 
+  4.checkPrime
+    This function has params (num,counter = 2, isPrime = "true")
+    this function returns true if the number is prime and false if not
+      1. Base Case: if counter equls num or isPrime is false return isPrime
+      2. if not base case, check if (num % counter === 0) recursive call incrementing counter and setting isPrime to false
+      3. other wise recursive call incrementing counter to go to the next number
+    
+-->

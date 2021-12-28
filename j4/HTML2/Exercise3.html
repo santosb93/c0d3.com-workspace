@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--
+    HTML
+    btn.btn--addPerson 
+    div.container--inputField
+    h1.header--Registered
+    div.container--registeredList
+
+    Javascript
+    add all elements with documentQuerySelector
+    add click function to btnAddPerson
+    create a variable for numRegistered = 0
+      This function will
+        set the innerHTML for div.container--inputField to
+          -label for input.firstName (<label for = ".firstName">First Name:</label>)
+          -create input.firstName
+          -label for input.LastName (<label for = ".lastName">Last Name:</label>)
+          -create input.lastName
+          -btn.Register
+        addEventListener for a click event on btn.register
+          This listener will check if numRegistered is > 0
+            if so append ,firstName lastName to div.container -- registeredList
+            if not append firstName lastName to div.container -- registeredList
+            set the innerHTML for div.container-registeredList to ""
+  -->
+  <button class="btn--addPerson">Add Person</button>
+  <div class="container--inputField"></div>
+  <h1 class="header--registered">Registered</h1>
+  <div class="container--registeredList"></div>
+  <script>
+    const btnAddPerson = document.querySelector('.btn--addPerson')
+    const inputField = document.querySelector('.container--inputField')
+    const registeredList = document.querySelector('.container--registeredList')
+    let numRegistered = 0
+
+    btnAddPerson.addEventListener('click', ()=>{
+      const containerThisPerson = document.createElement('div')
+      const firstName = document.createElement('INPUT')
+      firstName.classList.add('firstName')
+      const lastName = document.createElement('input')
+      lastName.classList.add('lastName')
+      const btnRegister = document.createElement('BUTTON')
+      btnRegister.innerText = 'Register'
+      const firstNameLabel = document.createElement('LABEL')
+      firstNameLabel.htmlFor = 'firstName'
+      firstNameLabel.innerText = ' First Name: '
+      const lastNameLabel = document.createElement('LABEL')
+      lastNameLabel.htmlFor = 'lastName'
+      lastNameLabel.innerText = ' Last Name: '
+
+      btnRegister.addEventListener('click', ()=>{
+        if(numRegistered){
+          registeredList.append(`, `)
+        }
+        registeredList.append(firstName.value,' ',lastName.value)
+        numRegistered++
+        containerThisPerson.remove()
+      })
+
+
+      containerThisPerson.append(firstNameLabel,firstName,lastNameLabel,lastName,btnRegister)
+
+      inputField.append(containerThisPerson)
+    
+    })
+  </script>
+</body>
+</html>

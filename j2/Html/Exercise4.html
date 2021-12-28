@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input type="number" class="input">
+        <button class="generate">Generate</button>
+        <h1 class="header"></h1>
+    </div>
+    <script>
+        const input = document.querySelector(".input")
+        const header = document.querySelector(".header")
+        const btnGenerate = document.querySelector(".generate")
+        btnGenerate.onclick = () => {
+            const num = parseInt(input.value, 10)
+            let helloString = ""
+            for(let i = 0 ; i < num ; i++)
+                helloString += 'Hello'
+            header.innerText = helloString
+        }
+    </script>
+    
+</body>
+</html>
+
+<!--
+    Create a page with an input box and a button. The input box takes a number, and when the button is clicked,
+    Hello is repeated that many times is displayed inside an <h1> element
+
+    1. In HTML create a div class "container" with an input class "input", a button class "generate",
+     an <h1> element class "hello"
+    2. On the onclick, get the input value and convert it to a number
+    3. create a for loop that concats a "hello" to the helloString varaible input.value many times
+    4. change the innerText of the H1 element to the helloString
+-->

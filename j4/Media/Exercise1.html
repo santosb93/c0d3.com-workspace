@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input class = "input--audioURL" type="text">
+  <audio class = "audio" src=""></audio>
+  <h1 class = "display">Input an MP3 URL and hit Enter</h1>
+
+  <script>
+    const inputURL = document.querySelector('.input--audioURL')
+    const audio = document.querySelector('.audio')
+    const display = document.querySelector('.display')
+
+    inputURL.addEventListener('keyup', (e)=>{
+      if(e.keyCode === 13){
+        audio.src = inputURL.value
+        display.innerText = 'Playing...'
+        display.addEventListener('mouseleave', ()=>{
+          audio.pause()
+          display.innerText = 'Paused...'
+        })
+        display.addEventListener('mouseenter', ()=>{
+          audio.play()
+          display.innerText = 'Playing...'
+        })
+        audio.play()
+        display.focus()
+      }
+
+    })
+  </script>
+  
+</body>
+</html>

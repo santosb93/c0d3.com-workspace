@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="btn--previous">Previous</button>
+  <button class="btn--next">Next</button>
+  <div class= "container--line"></div>
+  <input class = "input" type="text">
+  <button class = "btn--submit">Submit</button>
+  <div class= "container--story"></div>
+  <script>
+    const btnPrevious = document.querySelector(".btn--previous")
+    const btnNext = document.querySelector(".btn--next")
+    const btnSubmit = document.querySelector(".btn--submit")
+    const containerLine = document.querySelector(".container--line")
+    const containerStory = document.querySelector(".container--story")
+    const story = JSON.parse(localStorage.getItem('storyBook') || '[]')
+    const input = document.querySelector('.input')
+    let index = 0
+    let list = []
+
+    const render = () => {
+      containerStory.innerHTML = story.reduce((acc, e)=>{
+        return acc + '\n' + `<h2>${e}</h2>
+        `
+      }, '')
+      list = document.querySelectorAll("h2")
+      list.forEach((listItem, i)=>{
+        listItem.addEventListener('click', () => {
+          story.splice(i,1)
+          localStorage.setItem("storyBook", JSON.stringify(story))
+          if(story.length === 0) containerLine.innerHTML = `<p>There is no story</p>`
+          render()
+        })
+      })  
+
+    }
+
+    btnPrevious.onclick = () => {
+      if(story.length === 0) return
+      containerLine.innerHTML = 
+      `<p>${story[(index < 1) ? 0 : --index]}</p>`
+      
+    }
+
+    btnNext.onclick = () => {  
+      if(story.length === 0) return
+      containerLine.innerHTML = 
+      `<p>${story[(index >= story.length - 1) ? index = story.length -1 : ++index]}</p>`
+      
+    }
+
+    btnSubmit.onclick = () => {
+      if(input.value === '') return
+      story.push(input.value)
+      if(story.length === 1) containerLine.innerHTML = `<p>${story[0]}</p>`
+      localStorage.setItem('storyBook', JSON.stringify(story))
+      render()
+    }
+
+    containerLine.innerHTML = story[0] || '<p>There is no story</p'
+    render()
+
+
+  </script>
+  <!-- 
+    In HTML
+    create a button for previous create a button for next
+    create a div class 'Storage' item
+    create an input, create a button for submit
+    create a div class
+
+    In JS
+    Btn--previous.onclick will change the innerHTML of container line to the previous index
+    of the localStorage Array. if index === 0 , the button will do nothing
+
+    Btn--next.onclick will change the innerHTML of container line to the next index
+    of the localStorage Array. if index === arraylength - 1, the button will do nothing
+
+    btn--submit.onclick will store the input value into the data array
+    it will also store the array data in the local storage array
+    
+    render()
+    render will get the arraydata and change the inner element of the container story div
+    it will also add an even listener to each list item. if clicked it will splice the array and
+    call render
+  --> 
+
+
+
+  
+</body>
+</html>

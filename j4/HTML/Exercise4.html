@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" class ="input">
+  <div class = "xWriter"></div>
+  <div class = "display"></div>
+
+  <script>
+    const input = document.querySelector('.input')
+    const xWriter = document.querySelector('.xWriter')
+    const display = document.querySelector('.display')
+    const displayArr = []
+    const render = () =>{
+      displayArr.unshift(input.value)
+          const displayString = displayArr.reduce((str, thisString)=>{
+          return str + `<h1>${Math.random()}</h1>`
+        }, '')
+        display.innerHTML = displayString
+        const allH1 = document.querySelectorAll('h1')
+        allH1.forEach((h1,i)=>{
+          const number = h1.innerText
+          h1.addEventListener('mouseenter', ()=>{
+            h1.innerText = displayArr[i]
+          })
+          h1.addEventListener('mouseleave', ()=>{
+            h1.innerText = number
+          })
+          
+        })
+        xWriter.innerText = ''
+        input.value = ''
+    }
+    const renderX = (num, i=0,result = '') =>{
+      if(i === num) return result
+      return renderX(num, i+1, result + 'X')
+    }
+
+    input.addEventListener('keyup', (e)=>{
+      xWriter.innerText = renderX(input.value.length)
+      if(e.keyCode === 13 && input.value.length != 0) render()
+    })
+
+    input.focus()
+      
+  </script>
+</body>
+</html>

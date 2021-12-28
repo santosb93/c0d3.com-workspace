@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="module">
+      <div class="module__title module__title--1">Song</div>
+      <div class="module__element module__element">
+        <p class="element__text">Lorem ipsum dolor sit amet.</p>
+        <button class="element__button">></button>
+      </div>
+      <div class="container--submit">
+        <input class="submit__input" type="text" />
+        <button class="submit__btn">Submit</button>
+      </div>
+    </div>
+  </body>
+  <style>
+    .module__title {
+      text-align: center;
+      color: white;
+    }
+    .container--submit {
+      display: flex;
+      width: 100%;
+      height: 100px;
+    }
+    .submit__input {
+      flex: 1;
+    }
+    .module__title--1 {
+      background-color: #35235d;
+    }
+    .module__title--2 {
+      background-color: #cb2402;
+    }
+    .module__title--3 {
+      background-color: #4c49a2;
+    }
+    .module__title--4 {
+      background-color: #a31a48;
+    }
+    .module__element {
+      display: flex;
+      width: 100%;
+    }
+    .element__button {
+      background-color: lightgrey;
+      border-style: none;
+    }
+    .element__text {
+      background-color: lightgrey;
+      margin: 0;
+      flex: 1;
+    }
+  </style>
+</html>

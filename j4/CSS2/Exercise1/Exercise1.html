@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./Exercise1.css">
+</head>
+<body>
+  <div class=" container--video">
+    <h1 class = "subtitle"></h1>
+    <video
+    class="videoElement"
+    src="https://songz.c0d3.com/js4/exercises/pubDomainRemix.mp4"
+    controls
+  ></video>
+</div>
+  <div class = "container container--input">
+    <h2 class = "container--input__Title">Add Caption</h2>
+    <input type="text" placeholder="Caption" class = "input--caption">
+    <input type="text" placeholder="Start (ms)" class = "input--startTime">
+    <input type="text" placeholder="End (ms)" class = "input--endTime">
+    <button class = "btn--save">Save</button>
+  </div>
+  <div class = "container container--captions"></div>
+
+
+ 
+
+<script src = "Exercise1.js"></script>
+</body>
+</html>

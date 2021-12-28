@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<button class = 'btn--start'>Start</button>
+<div class = 'container--display'></div>
+<script>
+  const btnStart = document.querySelector('.btn--start')
+  const display = document.querySelector('.container--display')
+  const startApp = () =>{
+    btnStart.remove()
+    const timer = document.createElement('h1')
+    const video = document.createElement('video')
+    video.src = 'https://songz.c0d3.com/js4/examples/ankurBunny.mp4'
+    let isStarted = false
+    video.loop = true
+    display.append(timer,video)
+    timer.innerText = "0:00"
+
+    video.addEventListener('timeupdate', ()=>{
+      let seconds = Math.floor(video.currentTime)
+      const min = Math.floor(seconds / 60)
+      seconds = `${seconds}`
+
+      if(seconds.length < 2) seconds = `0${seconds}`      
+
+      timer.innerText = `${min}:${seconds}`
+    })
+    video.addEventListener('mouseenter', ()=>{
+      if(isStarted) return
+      video.play()
+      isStarted = true
+    })
+
+    video.addEventListener('mouseleave', ()=>{
+      if(!isStarted) return
+      video.pause()
+      isStarted = false
+    })
+
+  }
+
+  btnStart.addEventListener('click', ()=>{
+    startApp()
+  })
+
+</script>
+
+  
+</body>
+</html>

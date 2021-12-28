@@ -1,0 +1,67 @@
+body{
+  margin: 0;
+}
+
+.videoElement{
+  width: 800px;
+}
+
+.subtitle{
+  color: white;
+  position:absolute;
+  text-shadow: 1.5px 1.5px #181717
+}
+
+.container{
+  width: 800px;
+  margin: auto;
+}
+
+.container--video{
+  background-color: rgb(20, 20, 24);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.input--caption{
+  width: 50%;
+}
+
+.input--startTime{
+  width: 30%;
+}
+.input--endTime{
+  width: 30%;
+}
+
+.container--input{
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+}
+
+.container--captions{
+  display:flex;
+  flex-direction: column;
+}
+
+.container--captions__block{
+  display: flex;
+  justify-items: space-around;
+
+}
+.container--captions__startTime{
+  width: 15%;
+}
+
+.container--captions__endTime{
+  width: 15%;
+
+}
+
+.container--captions__caption{
+  width: 70%;
+  font-weight: 800;
+}
+
+

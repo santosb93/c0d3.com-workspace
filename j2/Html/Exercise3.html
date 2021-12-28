@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "container">        
+    </div>
+    <script>
+    const container = document.querySelector('.container')
+    const startApp = () => {
+        container.innerHTML = `
+        <input class = "input--first" type="number" value = "0">
+        <Button class = "btn--start">Start</Button>
+        `
+        const btnStart = document.querySelector('.btn--start')
+        const inputFirst = document.querySelector('.input--first')
+        btnStart.onclick = () => {
+            container.innerHTML = `
+            <input class = "input--second" type="number" value = "0">
+            <Button class = "btn--add">Add</Button>
+            <Button class = "btn--goBack">GoBack</Button>
+            <p class = "calculator">${inputFirst.value} +</p>
+            `
+            const btnAdd = document.querySelector('.btn--add')
+            const calc = document.querySelector('.calculator')
+            const inputSecond = document.querySelector('.input--second')
+            const btnGoBack = document.querySelector('.btn--goBack')
+            btnAdd.onclick = () => {
+                calc.innerText = `
+                ${inputFirst.value} + ${inputSecond.value} = ${parseInt(inputFirst.value, 10) + parseInt(inputSecond.value, 10)}
+                `
+            } 
+            btnGoBack.onclick = startApp
+            
+        }
+    }
+    startApp()
+    </script>
+
+
+</body>
+</html>
+
+<!--
+  Build a closure UI1
+  1. input - start
+   on click
+  2. input - add - goback
+  3. adds 1 + 2 
+  (user input on 2nd adds on add click - resets on go back)
+  
+  wrap the start of the app with a div called container. This div should contain input--first and btn--start
+  creat a function in which when ran, first grab the btn with querySelector
+  set the btn--start on click to change innerHTML of the div to input--second, btn--add, btn--goBack, 
+  h1 with input--first.value and a +
+  set the btn--add onclick to change the h1 to input--first.value "+" input--second.value "=" the sum of the two inputs
+  set the btn.onclick of the goBack to the start app function
+-->

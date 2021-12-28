@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--
+  /**
+   * Create a dynamic select option generator: Type a string into the input box and click the Add button. 
+   The string should show up as an option.
+   HTML will contain an h1, input field with type text, button called add, and a select item
+   IN JS
+      use document.querySelctor to select the input field, button, and the select item
+      use eventListener to listen for the button click
+      if the button is clicked get the input value
+      store the input value into an array
+      use reduce to set the inner HTML to the contents of the array as a string with tags <option>${e} </option>
+  -->
+  <h1>Add Option</h1>
+  <input class = "input" type="text">
+  <button class = "btn--add">Add</button>
+  <select class = "dropdown"></select>
+<script>
+  const input = document.querySelector(".input")
+  const btn = document.querySelector(".btn--add")
+  const dropdown = document.querySelector(".dropdown")
+  const dataArray = []
+  btn.addEventListener('click', () => {
+    dataArray.push(input.value)
+    dropdown.innerHTML = dataArray.reduce((acc, e)=> {
+      return acc + 
+      `
+      <option> ${e} </option>
+      `
+    }, '')
+  })
+
+  
+
+  
+</script>
+</body>
+
+</html>
+

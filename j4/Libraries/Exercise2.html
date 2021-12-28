@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<textarea name="" id="" cols="30" rows="10" class = 'input'></textarea>
+<button class = "btn">Speak</button>
+<select name="" id="" class = "accents"></select>
+  
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=lIswpI8L"></script>
+<script>
+  const input = document.querySelector('.input');
+  const accents = document.querySelector('.accents');
+  const btn = document.querySelector('.btn')
+  const voiceList = responsiveVoice.getVoices();
+  accents.innerHTML = voiceList.reduce((acc, e)=>{
+    return acc + `
+    <option value="${e.name}">${e.name}</option>
+    `
+  },'');
+  btn.addEventListener('click', ()=>{
+      responsiveVoice.speak(input.value, accents.value)
+
+  });
+
+
+</script>
+</body>
+</html>
