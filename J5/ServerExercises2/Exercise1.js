@@ -1,3 +1,4 @@
+/*Depending on which browser, display hello world in red or blue (chrome vs firefox)*/
 const express = require("express");
 const app = express();
 
@@ -5,7 +6,6 @@ const setColor = (browser = "UNKNOWN") => {
   let color = "#000000";
   if (browser === "chrome") color = "#0000FF";
   else if (browser === "firefox") color = "#FF0000";
-
   return `
     <style>
     h1 {
