@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // create a function that makes a 2d array
+      const twoDArray = (num) => {
+        const row = [];
+        for (let i = 0; i < num; i++) {
+          const col = [];
+          for (let j = 0; j < num; j++) {
+            const obj = {
+              x: i,
+              y: j,
+            };
+            col.push(obj);
+          }
+          row.push(col);
+        }
+        return row;
+      };
+      console.log(twoDArray(5));
+    </script>
+  </body>
+</html>
